@@ -1,0 +1,13 @@
+Options -Indexes
+
+RewriteEngine on
+
+# Blokir akses langsung ke folder dan file internal
+RewriteRule ^(app|inc|vendor)(/|$) - [F,L]
+RewriteRule ^layouts/[^/]+\.php$ - [F,L]
+RewriteRule ^(composer\.(json|lock)|database\.sql|README\.md|TUTORIAL\.md|\.gitignore)$ - [F,L]
+
+# Semua alamat lain diarahkan ke index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?page=$1 [NC,L,QSA]

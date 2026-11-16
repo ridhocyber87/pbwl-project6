@@ -1,0 +1,6 @@
+Options -Indexes
+
+# Folder ini hanya untuk gambar, file PHP tidak boleh dijalankan
+<FilesMatch "(?i)\.(php|phtml|phar|php[0-9])$">
+    Require all denied
+</FilesMatch>
